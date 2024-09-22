@@ -16,14 +16,14 @@ shairport_image = client.images.get(shairport_image_name_tag)
 print(shairport_image)
 
 connections = {
-    "hw:Set": "Room0",
-    "hw:Set_1": "Room2",
-    "hw:Set_2": "Room3",
-    "hw:Set_3": "Room4",
-    "hw:Set_4": "Room5",
-    "hw:Set_5": "Room6",
-    "hw:Set_6": "Room7",
-    "hw:Set_7": "Room8",
+    "hw:Set": "MasterBath",
+    "hw:Set_1": "GuestBed",
+    "hw:Set_2": "LiamBed",
+    "hw:Set_3": "BrianOffice",
+    "hw:Set_4": "SheilaOffice",
+    "hw:Set_5": "Pub",
+    "hw:Set_6": "AidenBed",
+    "hw:Set_7": "MasterBed",
 }
 
 
