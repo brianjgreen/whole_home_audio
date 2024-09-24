@@ -21,11 +21,11 @@ print(shairport_image)
 connections = {
     "hw:Set": "MasterBath",
     "hw:Set_1": "GuestBed",
-    "hw:Set_2": "LiamBed",
-    "hw:Set_3": "BrianOffice",
-    "hw:Set_4": "SheilaOffice",
+    "hw:Set_2": "Bedroom1",
+    "hw:Set_3": "Office1",
+    "hw:Set_4": "Office2",
     "hw:Set_5": "Pub",
-    "hw:Set_6": "AidenBed",
+    "hw:Set_6": "Bedroom2",
     "hw:Set_7": "MasterBed",
 }
 
