@@ -4,6 +4,8 @@
 # sudo docker run -d --restart unless-stopped --net host --device /dev/snd \
 #     mikebrady/shairport-sync -a DenSystem -- -d hw:Set
 #
+# Create shairport-sync containers for each room by USB DAC connection
+#
 import docker
 
 shairport_image_name_tag = "mikebrady/shairport-sync:latest"
@@ -15,6 +17,7 @@ print(images)
 shairport_image = client.images.get(shairport_image_name_tag)
 print(shairport_image)
 
+# change these to match your room names and USB DAC connections
 connections = {
     "hw:Set": "MasterBath",
     "hw:Set_1": "GuestBed",

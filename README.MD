@@ -7,7 +7,8 @@
 
 `sudo docker run -d --restart unless-stopped --net host --device /dev/snd mikebrady/shairport-sync -a DenSystem -- -d hw:Set`
 
-Rooms not already attached to a dedicated RPi Zero
+Rooms not already attached to a dedicated RPi Zero W are on USB hubs connected to
+an X86 Linux box.
 Example output from `aplay -l` showing USB headphone DACs:
 - card 2: Set [C-Media USB Headphone Set], device 0: USB Audio [USB Audio]
   - Subdevices: 1/1

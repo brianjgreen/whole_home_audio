@@ -1,6 +1,14 @@
 #
 # sudo -E env PATH=${PATH} python3 activate_room.py
 #
+# Airplay(2) gets confused if you run several instances of shairport with
+# differnt port numbers on the same box.
+# The iOS device will only see one shairport-sync client per IP address.
+#
+# Pick a room to connect to the shairport-sync and start that container.
+# Stop the running container for a different room, if active.
+# Only run one shairport-sync instance per IP address.
+#
 
 import argparse
 
@@ -23,7 +31,7 @@ def get_containers(client):
             active = "NOT Connected"
             if state:
                 active = "ACTIVE"
-            print(f"{room} in docker {container.name} on {usb_dongle} is {active}")
+            print(f"{room} in {container.name} on {usb_dongle} is {active}")
             container_state[room] = (container.name, state)
 
     return container_state

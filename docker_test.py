@@ -1,6 +1,8 @@
 #
 # sudo -E env PATH=${PATH} python3 docker_test.py
 #
+# List shairport-sync containers by name, room, and USB DAC
+#
 
 import docker
 
