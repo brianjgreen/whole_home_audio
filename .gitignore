@@ -1,0 +1,5 @@
+# MacOS Index Files
+.DS_Store
+
+# Java Compiled Classes
+*.class
