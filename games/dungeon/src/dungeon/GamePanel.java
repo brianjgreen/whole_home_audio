@@ -2,13 +2,13 @@ package dungeon;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+// import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Random;
+// import java.util.Random;
 
 public class GamePanel extends JPanel {
 
@@ -21,7 +21,7 @@ public class GamePanel extends JPanel {
     private final List<int[]> items = new ArrayList<>();
     private final MessageLog log = new MessageLog();
     private final Renderer renderer = new Renderer();
-    private final Random rng = new Random();
+    // private final Random rng = new Random();
     private boolean gameOver;
     private boolean gameWon;
     private String deathMessage;

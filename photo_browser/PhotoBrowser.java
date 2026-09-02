@@ -18,7 +18,7 @@ public class PhotoBrowser extends JFrame {
     private static final int THUMB_SIZE = 150;
     private static final int THUMB_GAP = 8;
     private static final Set<String> IMAGE_EXTENSIONS = Set.of(
-        "jpg", "jpeg", "png", "gif", "bmp", "tiff", "tif", "webp"
+        "jpg", "jpeg", "png", "gif", "bmp", "tiff", "tif", "webp", "heic", "heif"
     );
 
     private final List<Path> allImages = new ArrayList<>();
@@ -216,7 +216,7 @@ public class PhotoBrowser extends JFrame {
     private void loadThumbnail(Path path) {
         if (thumbnailCache.containsKey(path)) return;
         try {
-            BufferedImage original = ImageIO.read(path.toFile());
+            BufferedImage original = readImage(path);
             if (original == null) return;
 
             int w = original.getWidth();
@@ -413,7 +413,7 @@ public class PhotoBrowser extends JFrame {
 
         Path destDir = chooser.getSelectedFile().toPath();
         statusLabel.setText("Copying...");
-        JButton source = (JButton) SwingUtilities.getWindowAncestor(gridPanel).getFocusOwner();
+        // JButton source = (JButton) SwingUtilities.getWindowAncestor(gridPanel).getFocusOwner();
 
         thumbnailLoader.submit(() -> {
             int copied = 0;
@@ -503,6 +503,38 @@ public class PhotoBrowser extends JFrame {
             JOptionPane.showMessageDialog(this,
                 "Cannot open file: " + ex.getMessage(),
                 "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    /**
+     * Read an image file into a BufferedImage. Falls back to the macOS
+     * "sips" tool to decode HEIF/HEIC (e.g. iPhone Live Photos), which
+     * ImageIO does not support.
+     */
+    private static BufferedImage readImage(Path path) {
+        try {
+            BufferedImage img = ImageIO.read(path.toFile());
+            if (img != null) return img;
+
+            String ext = getExtension(path.getFileName().toString()).toLowerCase();
+            if (!"heic".equals(ext) && !"heif".equals(ext)) return null;
+
+            Path tmp = Files.createTempFile("pb_heic_", ".jpg");
+            try {
+                Process p = new ProcessBuilder(
+                    "sips", "-s", "format", "jpeg", "-Z", "512",
+                    path.toString(), "--out", tmp.toString()
+                ).redirectErrorStream(true).start();
+                if (p.waitFor() != 0) return null;
+                return ImageIO.read(tmp.toFile());
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                return null;
+            } finally {
+                Files.deleteIfExists(tmp);
+            }
+        } catch (IOException e) {
+            return null;
         }
     }
 

@@ -13,7 +13,8 @@ public class SolitaireGUI extends JPanel implements MouseListener, MouseMotionLi
     private static final int FOUNDATION_Y = 20, STOCK_X = GAP;
     private static final int CORNER_R = 8;
 
-    private int dragX, dragY, mouseX, mouseY;
+    // private int dragX, dragY, mouseX, mouseY;
+    private int dragX, dragY;
     private boolean dragging;
     private int dragSourceTableau = -1, dragCardIndex = -1;
     private List<Card> dragCards = List.of();
@@ -308,8 +309,8 @@ public class SolitaireGUI extends JPanel implements MouseListener, MouseMotionLi
         dragCards = new ArrayList<>(pile.subList(row, pile.size()));
         dragX = e.getX() - CARD_W / 2;
         dragY = e.getY() - 20;
-        mouseX = e.getX();
-        mouseY = e.getY();
+        // mouseX = e.getX();
+        // mouseY = e.getY();
         repaint();
     }
 
@@ -367,8 +368,8 @@ public class SolitaireGUI extends JPanel implements MouseListener, MouseMotionLi
         if (dragging) {
             dragX = e.getX() - CARD_W / 2;
             dragY = e.getY() - 20;
-            mouseX = e.getX();
-            mouseY = e.getY();
+            // mouseX = e.getX();
+            // mouseY = e.getY();
             repaint();
         }
     }

@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.function.Function;
+// import java.util.function.Function;
 
 public class RotatingCube extends JPanel implements ActionListener {
     private final Timer timer;
@@ -14,11 +14,11 @@ public class RotatingCube extends JPanel implements ActionListener {
     };
 
     // 12 edges connecting vertex pairs
-    private final int[][] edges = {
-        {0,1},{1,2},{2,3},{3,0},
-        {4,5},{5,6},{6,7},{7,4},
-        {0,4},{1,5},{2,6},{3,7}
-    };
+    //private final int[][] edges = {
+    //    {0,1},{1,2},{2,3},{3,0},
+    //    {4,5},{5,6},{6,7},{7,4},
+    //    {0,4},{1,5},{2,6},{3,7}
+    //};
 
     // 6 faces (4 vertices each) for filled rendering
     private final int[][] faces = {

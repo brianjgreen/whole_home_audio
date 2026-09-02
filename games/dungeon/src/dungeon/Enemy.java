@@ -1,7 +1,7 @@
 package dungeon;
 
 import java.awt.Color;
-import java.util.Random;
+// import java.util.Random;
 
 public class Enemy {
 
@@ -42,7 +42,7 @@ public class Enemy {
     private int attack, defense;
     private final Type type;
     private boolean alerted;
-    private final Random rng = new Random();
+    // private final Random rng = new Random();
 
     public Enemy(int x, int y, Type type, int floorScaling) {
         this.x = x;

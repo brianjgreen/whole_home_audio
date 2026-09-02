@@ -6,7 +6,7 @@ import java.util.List;
 public class Renderer {
 
     private static final int TILE_SIZE = 24;
-    private static final Color FOG_EXPLORED = new Color(40, 40, 50);
+    // private static final Color FOG_EXPLORED = new Color(40, 40, 50);
     private static final Color FOG_UNSEEN = Color.BLACK;
     private static final Color HP_BAR_GREEN = new Color(40, 200, 60);
     private static final Color HP_BAR_RED = new Color(200, 40, 40);
@@ -299,7 +299,7 @@ public class Renderer {
         g.drawLine(0, logY, panelW, logY);
 
         g.setFont(new Font("Monospaced", Font.PLAIN, 12));
-        FontMetrics fm = g.getFontMetrics();
+        // FontMetrics fm = g.getFontMetrics();
         List<String> messages = log.recent(5);
 
         for (int i = 0; i < messages.size(); i++) {
